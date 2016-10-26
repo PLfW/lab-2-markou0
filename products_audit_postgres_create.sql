@@ -53,8 +53,8 @@ CREATE TABLE location (
 
 CREATE TABLE users (
 	id serial NOT NULL,
-	login varchar NOT NULL,
-	passwd varchar NOT NULL,
+	login varchar NOT NULL UNIQUE CHECK ( char_length(login) >= 5 ),
+	passwd varchar NOT NULL CHECK ( char_length(passwd) >= 5 ),
 	date_created DATE DEFAULT current_date,
 	full_name varchar,
 	role varchar NOT NULL DEFAULT 'USER',
